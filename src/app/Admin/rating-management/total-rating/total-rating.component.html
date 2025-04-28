@@ -1,0 +1,83 @@
+<div class="Container">
+  <div class="filter-container">
+    <label for="classFilter">Filter  Year: </label>
+    <select id="classFilter" [(ngModel)]="selectedYear" (change)="onYearChange()">
+      <option value="null">Select</option>
+      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+    </select>
+    <label for="classFilter">Session: </label>
+    <select id="classFilter" [(ngModel)]="selectedSession" (change)="onSessionChange()">
+      <option value="null">Select</option>
+      <option *ngFor="let session of sessions" [value]="session">{{ session }}</option>
+    </select>
+    <label for="classFilter">Sprint: </label>
+    <select id="classFilter" [(ngModel)]="selectedSprint" (change)="onSprintChange()">
+      <option value="null">Select</option>
+      <option *ngFor="let sprint of sprints" [value]="sprint">{{ sprint }}</option>
+    </select>
+  </div>
+  <div class="teacherContainer">
+  <div class="totalRating">
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>S.No.</th>
+            <th>Teachersname</th>
+            <th>TotalRating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let item of teacherTotalRating; let index = index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ item.FirstName +' ' + item.LastName }}</td>
+            <td>{{ item.AverageRating }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="topTeacher">
+    <div class="totalRating session">
+      <div class="table-container">
+        <h2>{{'Top Teacher of Session ' + selectedSession}}</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>S.No.</th>
+              <th>Teachersname</th>
+              <th>TotalRating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let item of topTeacherOtSession; let index = index">
+              <td>{{ index + 1 }}</td>
+              <td>{{ item.FirstName +' ' + item.LastName }}</td>
+              <td>{{ item.AverageRating }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="totalRating sprint">
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>S.No.</th>
+              <th>Teachersname</th>
+              <th>TotalRating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let item of topTeacherOtSession; let index = index">
+              <td>{{ index + 1 }}</td>
+              <td>{{ item.FirstName +' ' + item.LastName }}</td>
+              <td>{{ item.AverageRating }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="main">
+  <div *ngIf="statusMessage" class="status-message" [ngClass]="{'error': isError, 'success': !isError}">
+    {{ statusMessage }}
+    <button class="close-button" (click)="clearMessage()">&#10006;</button>
+  </div>
+  <div class="button-container">
+    <button (click)="sprintRating()" class="sprint-rating-button">{{ isSprintviewVisible ? 'Back' : 'Sprint Rating' }}</button>
+    <button (click)="addTeacher()" class="add-teacher-button">Add Teacher</button>
+  </div>
+  <div class="table-container" *ngIf="isSprintviewVisible==false">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>Edit</th>
+          <th>Name</th>
+          <th>Subject</th>
+          <th>Post</th>
+          <th>PhoneNo</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let item of ListofTeachers; let index = index">
+          <td>{{ index + 1 }}</td>
+          <td class="edit-button" (click)="editItem(item)"><span>&#9998;</span></td>
+          <td>{{ item.FirstName +" " +item.LastName }}</td>
+          <td>{{ item.Subject }}</td>
+          <td>{{ item.Post }}</td>
+          <td>{{ item.Phone }}</td>
+          <td>{{ item.Email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-add-teacher #teacherModal (teacherAdded)="addNewTeacher($event)"></app-add-teacher>
+
+<!-- <div class="content" *ngIf="isSprintviewVisible==true">
+  <div class="left">
+    <ul>
+      <li *ngFor="let teacher of teacherTotalRtByStd" (click)="selectTeacher(teacher)">
+        {{ teacher.FullName }} ({{ teacher.AverageRating| number: '1.1-1' }})
+      </li>
+    </ul>
+  </div>
+  <div class="right">
+    <h2>Ratings for {{ selectedTeacher.FullName }}</h2>
+    <ul>
+      <li *ngFor="let rating of teacherDisplayed">
+        <strong>{{ rating.StudentFullName }}:</strong> {{ rating.Rating }} - {{ rating.Comments }}
+      </li>
+    </ul>
+  </div>
+</div> -->
+<div *ngIf="isSprintviewVisible==true">
+  <div class="container">
+    <div class="mainn">
+      <div class="sidebar">
+        <div class="user-comment" *ngFor="let teacher of teacherTotalRtByStd" (click)="selectTeacher(teacher)" [ngClass]="{'selected': selectedTeacher === teacher}">
+          <div class="icon-circle">{{ getInitials(teacher.FullName) }}</div>
+            <div class="details">
+                <p>{{ teacher.FullName }}</p>
+                <p>{{ teacher.AverageRating| number: '1.1-1' }}</p>
+            </div>
+            <div class="count">1</div> <!-- need to implement-->
+        </div>
+      </div>
+      <div class="comments-section">
+        <div class="header">
+            <h2>Comments</h2>
+        </div>
+        <div class="comment" *ngFor="let rating of teacherDisplayed">
+            <div class="user-info">
+              <div class="icon-circle">{{ getInitials(rating.StudentFullName) }}</div>
+                <div>
+                    <p>{{ rating.StudentFullName }}</p>
+                    <p>{{ rating.Rating }}</p>
+                </div>
+            </div>
+            <p class="comm">{{ rating.Comments }}</p>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container">
+  <main>
+
+  </main>
+</div> -->
+
+
+
+
+
+

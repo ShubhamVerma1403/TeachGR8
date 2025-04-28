@@ -1,0 +1,14 @@
+<div [class.hidden]="isVisible()" class="sidebar">
+  <button (click)="closeSidebar()">Close Sidebar</button>
+  <span (click)="closeSidebar()" class="close-sidebar"><span class="material-symbols-outlined">
+    </span></span>
+  <div class="content" *ngIf="studentInfo">
+    <h2>Student Information</h2>
+    <p><strong>Name:</strong> {{ studentInfo.Name }}</p>
+    <p><strong>Class:</strong> {{ studentInfo.Class }}</p>
+    <p><strong>Roll No:</strong> {{ studentInfo.RollNo }}</p>
+  </div>
+  <div class="content" *ngIf="!studentInfo">
+    <p>No student information available.</p>
+  </div>
+</div>

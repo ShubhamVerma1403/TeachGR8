@@ -1,0 +1,29 @@
+<div class="main">
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>Edit</th>
+          <th>List of Teachers</th>
+          <th>Subject</th>
+          <th>Post</th>
+          <th>Rating</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let item of teachersRt; let index = index">
+          <td>{{ index + 1 }}</td>
+          <td><button (click)="editItem(item)">Edit</button></td>
+          <td>{{ item.FullName }}</td>
+          <td>{{ item.Subject }}</td>
+          <td>{{ item.Post }}</td>
+          <td>{{ item.Rating }}</td>
+          <td>{{ item.Comments }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

@@ -1,0 +1,31 @@
+<div class="background-image"></div>
+<div class="main-container">
+    <div class="image-container">
+        <img src="assets/img/images.jpg" alt="Image" class="image">
+    </div>
+    <div class="form-container">
+      <div class="loginDiv" id="loginDiv">
+        <h1>Login</h1>
+        <div class="inputField">
+          <label>Email or Username</label>
+          <input type="text" id="username" required aria-invalid="false" [(ngModel)]="loginobj.UserName" (input)="resetErrorMessage()" />
+
+        </div>
+        <div class="inputField">
+          <label>Password</label>
+          <input type="password" id="password" required aria-invalid="false" [(ngModel)]="loginobj.Password" (input)="resetErrorMessage()"/>
+
+        </div>
+        <div class="error" aria-errormessage="Invalid username or password." id="error" >
+        <p>{{errorMessage}}</p>
+      </div>
+      <button id="login" class="login" [disabled]="loginobj.Password=='' || loginobj.UserName==''" (click)="login()">Login</button>
+        <!-- Your form content here -->
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+.active {
+  font-weight: bold;
+  color: black !important;
+}
+/* parent.component.css */
+nav {
+  text-align: right; /* Aligns all content inside the nav to the right */
+}
+
+.nav-links {
+  list-style-type: none; /* Removes bullet points from list items */
+  margin: 5px;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline-block; /* Makes the list items appear in a row */
+  margin-right: 20px; /* Adds space between the links */
+}
+
+.nav-links a {
+  text-decoration: none; /* Removes the underline from the links */
+  color: #56585b; /* Changes the color of the links */
+  font-weight: bold; /* Makes the text bold */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+}
+
+.nav-links a:hover {
+  color: #050505; /* Changes the color on hover */
+}
+
+
+.components{
+  border-top: 1px solid #ddd;
+}

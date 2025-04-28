@@ -1,0 +1,24 @@
+/* sidebar.component.css */
+.sidebar {
+  padding: 14.5px;
+}
+button {
+  cursor: pointer;
+}
+.sidebar {
+  width: 235px;
+  height: 100%;
+  background: #e8e8e8;
+  position: fixed;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.hidden {
+  transform: translateX(0);
+}
+
+

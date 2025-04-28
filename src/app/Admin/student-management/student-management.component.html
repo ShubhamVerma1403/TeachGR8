@@ -1,0 +1,47 @@
+<div class="main">
+  <div *ngIf="statusMessage" class="status-message" [ngClass]="{'error': isError, 'success': !isError}">
+    {{ statusMessage }}
+    <button class="close-button" (click)="clearMessage()">&#10006;</button>
+  </div>
+  <div class="filter-container">
+    <label for="classFilter">Filter by Class: </label>
+    <select id="classFilter" [(ngModel)]="selectedClass" (change)="applyFilter()">
+      <option [disabled]="true" value="">All Classes</option>
+      <option *ngFor="let cls of classes" [value]="cls">{{ cls }}</option>
+    </select>
+    <label for="classFilter">Section: </label>
+    <select id="classFilter" [(ngModel)]="selectedSection"  (change)="applyFilter()" [disabled]="selectedSection==''">
+      <option [disabled]="true" value="">Select</option>
+      <option *ngFor="let sec of sections" [value]="sec">{{ sec }}</option>
+    </select>
+  </div>
+  <div class="button-container">
+    <button (click)="addStudent()" class="add-teacher-button">Add Student</button>
+  </div>
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>Edit</th>
+          <th>Roll.No</th>
+          <th>Name</th>
+          <th>PhoneNo</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let item of studentsDetail_List; let index = index">
+          <td>{{ index + 1 }}</td>
+          <td class="edit-button" (click)="editItem(item)"><span>&#9998;</span></td>
+          <td>{{ item.Roll_NO }}</td>
+          <td>{{ item.FirstName +" " +item.LastName }}</td>
+          <td>{{ item.Phone }}</td>
+          <td>{{ item.Email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-add-student #studentModal (studentAdded)="addNewStudent($event)"></app-add-student>
+

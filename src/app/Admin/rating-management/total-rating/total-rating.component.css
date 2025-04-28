@@ -1,0 +1,112 @@
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+.filter-container label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.filter-container select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.filter-container select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.filter-container select option[disabled] {
+  color: #999;
+}
+
+/* Dividing totalRating and topTeacher vertically */
+.teacherContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  height: calc(100vh - 141px);
+
+}
+
+.totalRating {
+  flex: 1;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}
+
+.totalRating .table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.totalRating .table th, .totalRating .table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.totalRating .table th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+.totalRating .table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Top teacher split into session and sprint horizontally */
+.topTeacher {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.topTeacher .session, .topTeacher .sprint {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.topTeacher .session h2, .topTeacher .sprint h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Ensuring layout is responsive */
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .totalRating, .topTeacher {
+    flex: none;
+    height: auto;
+  }
+}

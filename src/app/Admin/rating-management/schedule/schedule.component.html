@@ -1,0 +1,42 @@
+
+<div class="container">
+  <div class="session-schedule">
+    <p>Session</p>
+    <input type="date" placeholder="Ex. 01/01/2024" [(ngModel)]="sessionSchedule.startDate" (change)="updateSessionEndDate()">
+
+    <label for="classFilter">Duration: </label>
+    <select id="classFilter" [(ngModel)]="sessionSchedule.duration" (change)="updateSessionEndDate()">
+      <option value="null">Select</option>
+      <option *ngFor="let duration of scheduleDurations" [value]="duration">{{ duration }}</option>
+    </select>
+
+    <input type="date" placeholder="Ex. 01/01/2024" [(ngModel)]="sessionSchedule.endDate" disabled>
+  </div>
+
+  <div class="sprint-schedule">
+    <p>Sprint</p>
+    <input type="date" placeholder="Ex. 01/01/2024" [(ngModel)]="sprintSchedule.startDate" (change)="updateSprintEndDate()">
+
+    <label for="classFilter">Duration: </label>
+    <select id="classFilter" [(ngModel)]="sprintSchedule.duration" (change)="updateSprintEndDate()">
+      <option value="null">Select</option>
+      <option *ngFor="let duration of sprintDurations" [value]="duration">{{ duration }}</option>
+    </select>
+
+    <input type="date" placeholder="Ex. 01/01/2024" [(ngModel)]="sprintSchedule.endDate" disabled>
+  </div>
+
+  <div>
+    <button (click)="saveSchedule()">Save</button>
+    <button (click)="DataMigration()">Migrate</button>
+  </div>
+</div>
+
+<label for="classFilter">Duration: </label>
+<select id="classFilter">
+  <option value="null">Select</option>
+  <option *ngFor="let duration of scheduleDurations" [value]="duration">{{ duration }}</option>
+</select>
+
+
+

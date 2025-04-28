@@ -1,0 +1,14 @@
+<nav>
+  <ul class="nav-links">
+    <li><a (click)="showComponent('CurrentRating')" [class.active]="selectedComponent === 'CurrentRating'">Current Rating</a></li>
+    <li><a (click)="showComponent('TotalRating')" [class.active]="selectedComponent === 'TotalRating'">Total Rating</a></li>
+    <li><a (click)="showComponent('Schedule')" [class.active]="selectedComponent === 'Schedule'">Schedule</a></li>
+    <!-- Add more links as needed -->
+  </ul>
+</nav>
+
+<div class="components">
+  <app-filter-rating (teacherAdded)="GetTeacherTotalRatingCommentsFilter($event)" [activeFilterData]="activeFilterData" [filterdata]="filterData" [teacherTotalRatingComments]="teacherTotalRatingComments" [tchStdRtAll]="tchStdRtAll" *ngIf="selectedComponent === 'CurrentRating'"></app-filter-rating>
+  <app-total-rating *ngIf="selectedComponent === 'TotalRating'" (teacherAdded)="GetTeacherTotalRatingCommentsFilter($event)" [topTeacherOtSession]= "topTeacherOtSession" [teacherTotalRating]="teacherTotalRatingComments" [activeFilterData]="activeFilterData" [filterdata]="filterData"></app-total-rating>
+  <app-schedule *ngIf="selectedComponent === 'Schedule'"></app-schedule>
+</div>

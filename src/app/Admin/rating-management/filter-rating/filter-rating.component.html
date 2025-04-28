@@ -1,0 +1,48 @@
+<div class="filter-container">
+  <label for="classFilter">Filter  Year: </label>
+  <select id="classFilter" [(ngModel)]="selectedYear" (change)="onYearChange()">
+    <option value="null">Select</option>
+    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+  </select>
+  <label for="classFilter">Session: </label>
+  <select id="classFilter" [(ngModel)]="selectedSession" (change)="onSessionChange()">
+    <option value="null">Select</option>
+    <option *ngFor="let session of sessions" [value]="session">{{ session }}</option>
+  </select>
+  <label for="classFilter">Sprint: </label>
+  <select id="classFilter" [(ngModel)]="selectedSprint" (change)="onSprintChange()">
+    <option value="null">Select</option>
+    <option *ngFor="let sprint of sprints" [value]="sprint">{{ sprint }}</option>
+  </select>
+</div>
+
+<div class="container">
+  <div class="mainn">
+    <div class="sidebar">
+      <div class="user-comment" *ngFor="let teacher of teacherTotalRatingComments" (click)="selectTeacher(teacher)" [ngClass]="{'selected': selectedTeacher === teacher}">
+        <div class="icon-circle">{{ getInitials(teacher.FirstName, teacher.LastName) }}</div>
+          <div class="details">
+              <p>{{ teacher.FirstName +' ' + teacher.LastName }}</p>
+              <p>{{ teacher.AverageRating| number: '1.1-1' }}</p>
+          </div>
+          <div class="count">{{ teacher.FeedBackCount}}</div>
+      </div>
+    </div>
+    <div class="comments-section">
+      <div class="header">
+          <h2>Comments</h2>
+      </div>
+      <div class="comment" *ngFor="let rating of teacherDisplayed">
+          <div class="user-info">
+            <div class="icon-circle">{{ getInitialsFromName(rating.StudentFullName) }}</div>
+              <div>
+                  <p>{{ rating.StudentFullName }}</p>
+                  <p>{{ rating.Rating }}</p>
+              </div>
+          </div>
+          <p class="comm">{{ rating.Comments }}</p>
+      </div>
+  </div>
+  </div>
+</div>
+

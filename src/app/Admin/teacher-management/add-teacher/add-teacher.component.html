@@ -1,0 +1,42 @@
+<div class="modal" [ngClass]="{'show': isOpen}">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeModal()">&times;</span>
+    <h2>Add New Teacher</h2>
+    <form  [formGroup]="teacherForm" (ngSubmit)="submitForm()">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" formControlName="FirstName"  name="firstName" >
+      <span class="text-danger" *ngIf="teacherForm.controls['FirstName'].touched && teacherForm.controls['FirstName'].invalid ">First Name is required</span>
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" formControlName="LastName"  name="lastName">
+      <span class="text-danger" *ngIf="teacherForm.controls['LastName'].touched && teacherForm.controls['LastName'].invalid  ">Last Name is required</span>
+
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" formControlName="Subject"  name="subject" required>
+      <span class="text-danger" *ngIf="teacherForm.controls['Subject'].touched && teacherForm.controls['Subject'].invalid ">Subject is required</span>
+
+      <label for="post">Post:</label>
+      <input type="text" id="post" formControlName="Post"  name="post" required>
+      <span class="text-danger" *ngIf="teacherForm.controls['Post'].touched && teacherForm.controls['Post'].invalid">Post is required</span>
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" formControlName="Phone"  name="phone" required>
+      <span class="text-danger" *ngIf="teacherForm.controls['Phone'].touched && teacherForm.controls['Phone'].invalid">Phone Number is required</span>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="Email"  name="email" required>
+      <span class="text-danger" *ngIf="teacherForm.controls['Email'].touched && teacherForm.controls['Email'].invalid">Email is required</span>
+
+      <label for="email">UserName:</label>
+      <input type="email" id="email" formControlName="Username"  name="email" required>
+      <span class="text-danger" *ngIf="teacherForm.controls['Username'].touched && teacherForm.controls['Username'].invalid ">UserName is required</span>
+
+      <label for="email">Password:</label>
+      <input type="email" id="email" formControlName="Password"  name="email" required>
+      <span class="text-danger" *ngIf="teacherForm.controls['Password'].touched && teacherForm.controls['Password'].invalid">Password is required</span>
+
+      <button type="submit" [disabled]='teacherForm.invalid'>Add Teacher</button>
+    </form>
+  </div>
+</div>
+

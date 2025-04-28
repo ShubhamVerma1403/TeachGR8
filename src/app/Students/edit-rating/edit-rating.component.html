@@ -1,0 +1,21 @@
+<div class="modal-background"></div>
+<div class="modal-container" cdkDrag >
+  <h1 cdkDragHandle>Edit/Add Rating</h1>
+  <div class="modal-content">
+    <div class="left">
+      <label for="rating">Rating:</label><br>
+      <input type="number" id="rating" name="rating" min="1" max="10" [(ngModel)]="teach.Rating">
+    </div>
+    <div class="right">
+      <label for="comment">Comment:</label><br>
+      <textarea id="comment" name="comment" rows="4" [(ngModel)]="teach.Comments"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="cancel()">Cancel</button>
+    <button (click)="save()">Save</button>
+  </div>
+</div>
+
+
+

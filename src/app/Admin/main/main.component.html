@@ -1,0 +1,63 @@
+<div class="main">
+  <div class="filter-container">
+    <label for="classFilter">Filter by Class: </label>
+    <select id="classFilter" [(ngModel)]="selectedClass" (change)="applyFilter()">
+      <option value="">All Classes</option>
+      <option *ngFor="let cls of classes" [value]="cls">{{ cls }}</option>
+    </select>
+    <label for="classFilter">Section: </label>
+    <select id="classFilter" [(ngModel)]="selectedSection"  (change)="applyFilter()" [disabled]="selectedSection==''">
+      <option [disabled]="true" value="">Select</option>
+      <option *ngFor="let sec of sections" [value]="sec">{{ sec }}</option>
+    </select>
+  </div>
+  <div class="table-container" *ngIf="!filterAppiled">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>StudentsName</th>
+          <th>Teachersname</th>
+          <th>Rating</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let item of tchStdRtAll; let index = index">
+          <td>{{ index + 1 }}</td>
+          <td>{{ item.StudentFullName }}</td>
+          <td>{{ item.TeacherFullName }}</td>
+          <td>{{ item.Rating }}</td>
+          <td>{{ item.Comments }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-container" *ngIf="filterAppiled">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>Roll.No</th>
+          <th>StudentsName</th>
+          <th>TeachersName</th>
+          <th>Rating</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let item of StudentTchRtByClassList; let index = index">
+          <td>{{ index + 1 }}</td>
+          <td>{{ item.Roll_NO }}</td>
+          <td>{{ item.StudentFullName }}</td>
+          <td>{{ item.TeacherFullName }}</td>
+          <td>{{ item.Rating }}</td>
+          <td>{{ item.Comments }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+

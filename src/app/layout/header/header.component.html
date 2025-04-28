@@ -1,0 +1,24 @@
+<div class="header">
+  <div class="left-container">
+    <button class="menu-icon" (click)="toggleSidebar()">
+      <div class="icon"></div>
+      <div class="icon"></div>
+      <div class="icon"></div>
+    </button>
+    <div class="school-title">Kendriya Vidyalaya</div>
+    <img src="assets/img/kv.jpg" alt="Image" class="image">
+  </div>
+  <div class="right-container">
+    <div class="app-title">TeachR8: Teacher Rating & Recognition</div>
+    <div class="links">
+
+      <a routerLink="/Admin" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/Admin/trating" routerLinkActive="active-link">Total Rating</a>
+      <a routerLink="/Admin/teacher" routerLinkActive="active-link">Teachers</a>
+      <a routerLink="/Admin/student" routerLinkActive="active-link">Students</a>
+      <button class="logout-button"(click)="Logout()">LogOut</button>
+    </div>
+  </div>
+</div>
+
+
