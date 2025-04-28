@@ -19,8 +19,11 @@ export class StorageService {
   }
 
   public getUserRole(): string {
-    if (this.userRole == '' && sessionStorage.getItem(Constants.USER_ROLE) ) {
-      this.userRole = sessionStorage.getItem(Constants.USER_ROLE) || '';
+    if (typeof window !== 'undefined' && window.sessionStorage){
+      if (this.userRole == '' && sessionStorage.getItem(Constants.USER_ROLE) ) {
+        this.userRole = sessionStorage.getItem(Constants.USER_ROLE) || '';
+      }
+
     }
     return this.userRole;
   }
