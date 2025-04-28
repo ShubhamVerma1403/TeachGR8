@@ -159,7 +159,7 @@ input{
 
 .form-container {
   flex: 1;
-  max-width: calc(40% - 40px); /* 20px for margin between image and form */
+  max-width: 40%; /* 20px for margin between image and form */
   /* margin-left: 20px; Margin between image and form */
   padding: 20px;
   background-color: #ffffff;
