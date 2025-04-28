@@ -22,6 +22,10 @@ export class HeaderComponent {
     private auth: AuthService
   ) { }
   public Logout(){
+    const confirmed = confirm('Are you sure you want to logout?');
+    if (!confirmed) {
+      return;
+    }
     this.auth.userLogout();
     this.studentInfoService.clearStudentInfo();
     this.hostComm.ClearSidebarState();

@@ -9,6 +9,9 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
       if (error.error instanceof ErrorEvent) {
         errorMessage = `Client Error: ${error.error.message}`;
+      }
+      else if (typeof error.error.message === 'string') {
+        errorMessage = `Server Error: ${error.error.message}`;
       } else {
         switch (error.status) {
           case 400:
