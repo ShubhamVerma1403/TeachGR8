@@ -3,6 +3,7 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { CommonModule }  from '@angular/common';
 import { HostCommunicationService } from '../../Services/host-communication.services';
 import { StudentInfoService } from '../../Services/StudentInfoServices';
+import { AuthService } from '../../core/services/auth/auth.service';
 
 
 @Component({
@@ -17,11 +18,11 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     private hostComm: HostCommunicationService,
-    private studentInfoService: StudentInfoService
+    private studentInfoService: StudentInfoService,
+    private auth: AuthService
   ) { }
   public Logout(){
-    sessionStorage.setItem('userRole','');
-    sessionStorage.setItem('userName','');
+    this.auth.userLogout();
     this.studentInfoService.clearStudentInfo();
     this.hostComm.ClearSidebarState();
     this.router.navigateByUrl('login');
