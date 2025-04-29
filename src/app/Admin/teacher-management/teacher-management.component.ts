@@ -8,6 +8,7 @@ import { HostCommunicationService } from '../../Services/host-communication.serv
 import { TeacherTotalRtByStd } from '../../Model/Admin/TeacherTotalRtByStd';
 import { TchStdRatingAll, TchStdRatingAllBOm } from '../../Model/TchStdRatingAll';
 import { lastValueFrom } from 'rxjs';
+import { MainStoreService } from '../../core/services/admin/main.store.service';
 
 @Component({
     selector: 'app-teacher-management',
@@ -28,7 +29,7 @@ export class TeacherManagementComponent implements OnInit,AfterViewInit{
 
   @ViewChild('teacherModal') teacherModal!: AddTeacherComponent;
 
-  constructor(private apiServices: ApiServices, private hostcomm: HostCommunicationService) { }
+  constructor(private apiServices: ApiServices, private hostcomm: HostCommunicationService, private mainStore: MainStoreService) { }
 
   ngAfterViewInit(): void {
 
@@ -39,7 +40,7 @@ export class TeacherManagementComponent implements OnInit,AfterViewInit{
   }
 
   public ListofTeachersDetail(){
-    this.apiServices.GetListOfTeachers().subscribe({
+    this.mainStore.GetListOfTeachers().subscribe({
       next: (data: TeachersDetail[] ) => this.ListofTeachers=data,
       error: (error) => console.log(error)
     });
