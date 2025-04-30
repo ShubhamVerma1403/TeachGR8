@@ -9,6 +9,9 @@ import { TeacherTotalRtByStd } from '../../Model/Admin/TeacherTotalRtByStd';
 import { TchStdRatingAll, TchStdRatingAllBOm } from '../../Model/TchStdRatingAll';
 import { lastValueFrom } from 'rxjs';
 import { MainStoreService } from '../../core/services/admin/main.store.service';
+import { TchmngtService } from '../../core/services/admin/teacher-management/tchmngt.service';
+import { TchmngtStoreService } from '../../core/services/admin/teacher-management/tchmngt.store.service';
+import { NewAddedTeacher } from '../../Model/Admin/NewAddedTeacher';
 
 @Component({
     selector: 'app-teacher-management',
@@ -29,7 +32,7 @@ export class TeacherManagementComponent implements OnInit,AfterViewInit{
 
   @ViewChild('teacherModal') teacherModal!: AddTeacherComponent;
 
-  constructor(private apiServices: ApiServices, private hostcomm: HostCommunicationService, private mainStore: MainStoreService) { }
+  constructor(private apiServices: ApiServices, private hostcomm: HostCommunicationService, private tchmngtService: TchmngtService) { }
 
   ngAfterViewInit(): void {
 
@@ -40,7 +43,7 @@ export class TeacherManagementComponent implements OnInit,AfterViewInit{
   }
 
   public ListofTeachersDetail(){
-    this.mainStore.GetListOfTeachers().subscribe({
+    this.tchmngtService.GetListOfTeachers().subscribe({
       next: (data: TeachersDetail[] ) => this.ListofTeachers=data,
       error: (error) => console.log(error)
     });
@@ -93,8 +96,8 @@ export class TeacherManagementComponent implements OnInit,AfterViewInit{
   }
   addNewTeacher(teacher: NewTeacher) {
     console.log('New student added:', teacher);
-    this.apiServices.AddNewTeacher(teacher).subscribe({
-      next: (data:any) => this.handleTeacherAddedSuccess(`Username: ${data.Username} added successfully`),
+    this.tchmngtService.AddNewTeacher(teacher).subscribe({
+      next: (data:NewAddedTeacher) => this.handleTeacherAddedSuccess(`Username: ${data.Username} added successfully`),
       error: (error:string) => this.handleTeacherAddedError(error)
     });
   }

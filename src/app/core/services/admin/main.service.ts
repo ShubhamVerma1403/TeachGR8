@@ -13,19 +13,14 @@ import { TeachersDetail } from '../../../Model/Admin/TeachersDetail';
 })
 export class MainService extends BaseApiService {
 
-  private tchStdRtAll = new BehaviorSubject<TchStdRatingAll[]>([]);
-
   constructor(protected override http: HttpClient) {
     super(http);
   }
   GetAllTchStdRtList(isWIP: boolean): Observable<TchStdRatingAll[]> {
-    return super.post<TchStdRatingAll[]>('SchoolData/GetAllTchStdRtList', {isWIP: isWIP});
+    return super.post<TchStdRatingAll[], { isWIP: boolean }>('SchoolData/GetAllTchStdRtList', {isWIP: isWIP});
   }
   GetStudentTchRtByClass(classSection: ClassSection): Observable<StudentTchRtByClass[]> {
-    return super.post<StudentTchRtByClass[]>('SchoolDataAdmin/GetStudentTchRtByClass', classSection);
+    return super.post<StudentTchRtByClass[], ClassSection>('SchoolDataAdmin/GetStudentTchRtByClass', classSection);
   }
 
-  GetListOfTeachers(): Observable<TeachersDetail[]> {
-    return super.get<TeachersDetail[]>('SchoolDataAdmin/GetListOfTeachers');
-  }
 }

@@ -19,8 +19,8 @@ export class BaseApiService {
     return this.http.get<T>(`${this.baseUrl}/${endpoint}`, { params });
   }
 
-  post<T>(endpoint: string, data: any): Observable<T> {
-    return this.http.post<T>(`${this.baseUrl}/${endpoint}`, data);
+  post<TResponse, TRequest = void>(endpoint: string, data?: TRequest): Observable<TResponse> {
+    return this.http.post<TResponse>(`${this.baseUrl}/${endpoint}`, data);
   }
 
   put<T>(endpoint: string, data: any): Observable<T> {

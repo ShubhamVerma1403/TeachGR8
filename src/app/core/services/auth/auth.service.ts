@@ -17,7 +17,7 @@ export class AuthService extends BaseApiService{
   }
 
   userLogin(loginobj:UserLogin):Observable<LoggedInUser>{
-      return super.post<LoggedInUser>('UserAcc/Login', loginobj).pipe(
+      return super.post<LoggedInUser,UserLogin>('UserAcc/Login', loginobj).pipe(
         tap(response => {
           this.storageService.setLoggedInData(response);
         })
